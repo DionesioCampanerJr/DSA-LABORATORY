@@ -1,0 +1,120 @@
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, item):
+        self.stack.append(item)
+
+    def pop(self):
+        return self.stack.pop() if not self.is_empty() else None
+
+    def is_empty(self):
+        return len(self.stack) == 0
+
+# Example 1: Reverse a string
+stack1 = Stack()
+string = "Hello, World"
+for char in string:
+    stack1.push(char)
+
+reversed_string = ""
+while not stack1.is_empty():
+    reversed_string += stack1.pop()
+
+print("Reversed String:", reversed_string)
+
+# Example 2: Check balanced parentheses
+def is_balanced_parentheses(expression):
+    stack2 = Stack()
+    for char in expression:
+        if char == '(':
+            stack2.push(char)
+        elif char == ')':
+            if stack2.is_empty():
+                return False
+            stack2.pop()
+    return stack2.is_empty()
+
+print("Balanced Parentheses:", is_balanced_parentheses("(())"))
+
+
+class Queue:
+    def __init__(self):
+        self.queue = []
+
+    def enqueue(self, item):
+        self.queue.append(item)
+
+    def dequeue(self):
+        return self.queue.pop(0) if not self.is_empty() else None
+
+    def is_empty(self):
+        return len(self.queue) == 0
+
+# Example 1: Printing tasks in order
+queue1 = Queue()
+tasks = ["Task 1", "Task 2", "Task 3", "Task 4", "Task 5"]
+for task in tasks:
+    queue1.enqueue(task)
+
+print("Tasks in order:")
+while not queue1.is_empty():
+    print(queue1.dequeue())
+
+# Example 2: First-come, first-served in a bank
+queue2 = Queue()
+customers = ["Alice", "Bob", "Charlie", "Joshua", "David"]
+for customer in customers:
+    queue2.enqueue(customer)
+
+print("Serving customers:")
+while not queue2.is_empty():
+    print(queue2.dequeue())
+
+# Example 1: Sum of elements in an array
+array1 = [22, 90, 80, 70,60]
+print("Sum of array:", sum(array1))
+
+# Example 2: Find the largest element
+array2 = [55, 75, 10, 99, 100]
+print("Largest element:", max(array2))
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+
+    def display(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+# Example 1: Create and display a linked list
+linked_list1 = LinkedList()
+for value in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]:
+    linked_list1.append(value)
+print("Linked List 1:")
+linked_list1.display()
+
+# Example 2: Add elements and display
+linked_list2 = LinkedList()
+for myvar in ['Andy', 'Bobby', 'Chris', 'Dada', 'Eric', 'Fanny']:
+    linked_list2.append(myvar)
+print("Linked List 2:")
+linked_list2.display()
