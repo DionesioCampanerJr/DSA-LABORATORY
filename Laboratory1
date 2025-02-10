@@ -71,13 +71,45 @@ print("Serving customers:")
 while not queue2.is_empty():
     print(queue2.dequeue())
 
-# Example 1: Sum of elements in an array
-array1 = [22, 90, 80, 70,60]
-print("Sum of array:", sum(array1))
+class ClassArray:
+    def __init__(self, *elements):
+        """Initialize the array with given elements."""
+        self.array = list(elements)
 
-# Example 2: Find the largest element
-array2 = [55, 75, 10, 99, 100]
-print("Largest element:", max(array2))
+    def append(self, value):
+        """Add an element to the array."""
+        self.array.append(value)
+
+    def remove(self, value):
+        """Remove the first occurrence of the value."""
+        if value in self.array:
+            self.array.remove(value)
+
+    def get(self, index):
+        """Get element at a specific index."""
+        if 0 <= index < len(self.array):
+            return self.array[index]
+        raise IndexError("Index out of range")
+
+    def display(self):
+        """Display the array elements."""
+        return self.array
+
+# Example 1: Creating an array and performing operations
+arr1 = ClassArray(1, 2, 3, 4, 5)
+print("Initial array:", arr1.display())
+arr1.append(6)
+print("After appending 6:", arr1.display())
+arr1.remove(3)
+print("After removing 3:", arr1.display())
+
+# Example 2: Working with string elements
+arr2 = ClassArray("apple", "banana", "cherry")
+print("\nString array:", arr2.display())
+arr2.append("date")
+print("After appending 'date':", arr2.display())
+arr2.remove("banana")
+print("After removing 'banana':", arr2.display())
 
 class Node:
     def __init__(self, data):
